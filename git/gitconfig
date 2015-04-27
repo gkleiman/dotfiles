@@ -1,0 +1,54 @@
+[user]
+  name = Gaston Kleiman
+  email = gaston.kleiman@gmail.com
+
+[color]
+  ui = true
+
+[alias]
+  # add
+  ap = add --patch                  # stage commits chunk by chunk
+
+  # branch
+  b = branch -v                     # branch (verbose)
+
+  # commit
+  ci = commit                       # commit
+  amend = commit --amend            # ammend your last commit
+
+  # checkout
+  co = checkout                     # checkout
+  nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
+
+  # cherry-pick
+  cp = cherry-pick -x               # grab a change from a branch
+
+  # status
+  st = status                       # status
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+
+[merge]
+  summary = true
+  verbosity = 1
+  tool = mvimdiff
+  log = 40
+
+[branch]
+  autosetupmerge = true
+
+[diff]
+  # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+  # instead of a/b/c/d as prefixes for patches
+  mnemonicprefix = true
+  algorithm = patience
+
+[push]
+  default = simple
+
+[mergetool "mvimdiff"]
+  cmd="mvim -c 'Gdiff' $MERGED"     # use fugitive.vim for 3-way merge
+  keepbackup=false
+
+[core]
+  editor = mvim -f
+	pager = less -FMRiX
