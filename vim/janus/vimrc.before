@@ -1,0 +1,13 @@
+let mapleader = ","
+
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+
+let g:solarized_visibility="low"
+
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
+
+call janus#disable_plugin('syntastic')
+call janus#disable_plugin('supertab')

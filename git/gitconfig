@@ -14,7 +14,7 @@
 
   # commit
   ci = commit                       # commit
-  amend = commit --amend            # ammend your last commit
+  amend = commit --amend            # amend your last commit
 
   # checkout
   co = checkout                     # checkout
@@ -25,16 +25,6 @@
 
   # status
   st = status                       # status
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-
-[merge]
-  summary = true
-  verbosity = 1
-  tool = mvimdiff
-  log = 40
-
-[branch]
-  autosetupmerge = true
 
 [diff]
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
@@ -42,13 +32,17 @@
   mnemonicprefix = true
   algorithm = patience
 
-[push]
-  default = simple
-
-[mergetool "mvimdiff"]
-  cmd="mvim -c 'Gdiff' $MERGED"     # use fugitive.vim for 3-way merge
-  keepbackup=false
+[interactive]
+  singlekey = true
 
 [core]
-  editor = mvim -f
-	pager = less -FMRiX
+	editor = mvim -f
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/

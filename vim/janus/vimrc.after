@@ -1,0 +1,30 @@
+set background=light
+colorscheme solarized
+
+" ZoomWin configuration
+map <Leader><Leader> :ZoomWin<CR>
+"
+" NERDTree configuration
+map <Leader>p :NERDTreeToggle<CR>
+
+" VisualBell
+au GUIEnter * set vb t_vb=
+
+" C++ settings
+augroup cc
+  autocmd FileType c,cpp set colorcolumn=100
+  autocmd FileType c,cpp set tw=100
+augroup END
+
+" Ctrl-p settings
+let g:ctrlp_switch_buffer=0
+
+" Use ESC to clear search
+if has("gui_macvim")
+  nnoremap <silent> <esc> :noh<return><esc>
+endif
+
+set nomodeline
+
+" Ack settings
+cnoreabbrev Ack Ack!

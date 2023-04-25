@@ -1,0 +1,76 @@
+let mapleader = ","
+
+call plug#begin()
+
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'lfv89/vim-interestingwords'
+Plug 'lifepillar/vim-solarized8'
+Plug 'preservim/nerdtree'
+Plug 'sh-dude/ZoomWin'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
+" VisualBell
+au GUIEnter * set vb t_vb=
+
+" C++ settings
+augroup cc
+  autocmd FileType c,cpp set colorcolumn=100
+  autocmd FileType c,cpp set tw=100
+augroup END
+
+" Solarized
+set background=light
+let g:solarized_visibility="high"
+colorscheme solarized8_flat
+
+" ZoomWin configuration
+nmap <Leader><Leader> :ZoomWin<CR>
+
+" NERDTree configuration
+nmap <Leader>p :NERDTreeToggle<CR>
+
+" fzf config
+nmap <D-t> :Files<CR>
+inoremap <D-t> <ESC>:Files<CR>
+
+nmap <D-F> :Rg<space>
+
+" Show line numbers
+set number
+
+" Highlight search results
+set hlsearch
+
+" After whitespace, insert the current directory into a command-line path
+cnoremap <expr> <C-P> getcmdline()[getcmdpos()-2] ==# ' ' ? expand('%:p:h') : "\<C-P>"
+
+" Shorten vim-gutter latency
+set updatetime=100
+
+" Backup and swap files
+set backupdir^=~/.vim/_backup// " where to put backup files.
+set directory^=~/.vim/_temp//   " where to put swap files.
+
+" Make jk and 0$ work on visual lines.
+nnoremap <buffer> j gj
+nnoremap <buffer> k gk
+nnoremap <buffer> 0 g0
+nnoremap <buffer> $ g$
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
